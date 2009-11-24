@@ -1,0 +1,5 @@
+clojure: /home/martin/opt/clojure/clojure.jar
+contrib: /home/martin/opt/clojure-contrib/clojure-contrib.jar
+compojure: /home/martin/opt/compojure/compojure.jar
+appengine_sdk: /home/martin/opt/appengine-java-sdk-1.2.6/lib/user/appengine-api-1.0-sdk-1.2.6.jar
+appengine_clj: /home/martin/opt/appengine-clj/appengine-clj.jar
