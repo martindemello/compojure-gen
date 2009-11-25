@@ -11,23 +11,31 @@ $dir = File.dirname($0)
 
 config = YAML.load(IO.read("#$dir/app-engine/config.yml"))
 
-# set up directory structure
-['src/', 'war/WEB-INF/classes', 'war/WEB-INF/lib'].each do |dir|
-  mkdir_p "#$project/#{dir}"
-end
-
-# copy jars
-%w(clojure contrib compojure appengine_sdk appengine_clj).each do |jar|
-  cp config[jar], "#$project/war/WEB-INF/lib/"
-end
-
-# write build.xml
-template = ERB.new(IO.read("#$dir/app-engine/build.xml"))
+# write skeleton files
 project = $project
 compojure = config['compojure']
-appengine_sdk = config['appengine_sdk']
-appengine_clj = config['appengine_clj']
+appengine_sdk_jar = config['appengine_sdk_jar']
+appengine_sdk_dir = config['appengine_sdk_dir']
+appengine_clj_jar = config['appengine_clj_jar']
+display_name = ARGV[1] || $project
+servlet_name = $project
+
 b = binding
-File.open("#$project/build.xml", 'w') {|f|
-  f.puts template.result(b)
-}
+
+files = nil
+skel = "#$dir/app-engine/skel"
+Dir.chdir(skel) {|d| files = Dir['**/*']}
+files.each do |f|
+  sfile = "#{skel}/#{f}"
+  ofile = "#$project/#{f}"
+  if File.directory? sfile
+    mkdir_p ofile
+  else
+    template = ERB.new(IO.read(sfile))
+    File.open(ofile, 'w') do |out|
+      out.puts template.result(b)
+    end
+  end
+end
+
+mv "#$project/src/project", "#$project/src/#$project"
