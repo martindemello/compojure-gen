@@ -1,0 +1,15 @@
+DEPENDS:
+* Google app engine sdk: http://code.google.com/appengine/downloads.html
+* appengine-clj: http://github.com/duelinmarkers/appengine-clj
+* compojure: http://github.com/weavejester/compojure
+
+Since this is just a skeleton generator, you don't need to have any of these actually installed, but the paths to each of the projects need to be filled into the config file.
+
+USAGE:
+* Edit app-engine/config.yml to point to the installation paths of the various components
+* Run
+   ruby /path/to/compojure-gen/appengine.rb <project name> [<display name>]
+	 cd <project name>
+	 ant devserver
+
+and go to http://localhost:8080 to see the hello world app up and running.
