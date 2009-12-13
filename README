@@ -8,7 +8,7 @@ Since this is just a skeleton generator, you don't need to have any of these act
 USAGE:
 * Edit app-engine/config.yml to point to the installation paths of the various components
 * Run
-   ruby /path/to/compojure-gen/appengine.rb <project name> [<display name>]
+   ruby /path/to/compojure-gen/app-engine.rb <project name> [<display name>]
 	 cd <project name>
 	 ant devserver
 
