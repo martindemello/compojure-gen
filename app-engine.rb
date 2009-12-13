@@ -6,6 +6,11 @@ require 'erb'
 
 include FileUtils
 
+unless ARGV[0]
+  puts "usage: #$0 <project-name> [<display-name>]"
+  exit
+end
+
 $project = ARGV[0]
 $dir = File.dirname($0)
 
