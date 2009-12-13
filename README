@@ -13,3 +13,6 @@ USAGE:
 	 ant devserver
 
 and go to http://localhost:8080 to see the hello world app up and running.
+
+CREDITS:
+* Lots of skeleton code extracted from http://github.com/duelinmarkers/guestbook-clj
